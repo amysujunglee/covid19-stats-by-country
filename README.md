@@ -1,10 +1,12 @@
 # covid19-stats-by-country
-Displaying COVID-19 total cases, recovered and deaths by country
 
+Displaying COVID-19 total cases, confirmed and deaths in Canada
 
-Steps:
-- User enters the website
-- Get the user's country code, 2 Digit ISO, by geoPlugin
-    - http://www.geoplugin.com/webservices/javascript
-- Get COVID-19 stats by following the country code (API)
+Languages used:
+JavaScript, HTML, CSS
 
+Methods used:
+
+- 3rd party's API (https://covid19api.com/)
+- .toLocaleString('en')
+- .slice(a, b)
