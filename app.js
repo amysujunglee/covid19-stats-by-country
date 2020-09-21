@@ -1,7 +1,7 @@
 const totalActive = document.querySelector(".total-active");
 const totalConfirmed = document.querySelector(".total-confirmed");
 const totalDeaths = document.querySelector(".total-deaths");
-const date = document.querySelector(".date");
+const lastUpdated = document.querySelector(".date");
 
 function getCovidStats() {
   fetch("https://api.covid19api.com/total/dayone/country/canada")
@@ -14,7 +14,7 @@ function getCovidStats() {
       totalActive.innerHTML = totalStats.Active.toLocaleString("en");
       totalConfirmed.innerHTML = totalStats.Confirmed.toLocaleString("en");
       totalDeaths.innerHTML = totalStats.Deaths.toLocaleString("en");
-      date.innerHTML = totalStats.Date.slice(0, 10);
+      lastUpdated.innerHTML = totalStats.Date.slice(0, 10);
 
       console.log(totalStats);
 
