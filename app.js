@@ -1,14 +1,32 @@
-const active = document.querySelector(".active");
-const confirmed = document.querySelector(".confirmed");
-const deaths = document.querySelector(".deaths");
+const totalActive = document.querySelector(".total-active");
+const totalConfirmed = document.querySelector(".total-confirmed");
+const totalDeaths = document.querySelector(".total-deaths");
 const date = document.querySelector(".date");
 
 function getCovidStats() {
-  fetch("https://api.covid19api.com/live/country/canada")
+  fetch("https://api.covid19api.com/total/dayone/country/canada")
     .then(res => res.json())
     .then(data => {
-      let bcStats = data.filter(prov => prov.Province === "British Columbia");
-      console.log(bcStats);
+      // const bcStats = data.filter(
+      //   prov => prov.Province === "British Columbia" && prov.Active
+      // );
+      const totalStats = data[data.length - 1];
+      totalActive.innerHTML = totalStats.Active.toLocaleString("en");
+      totalConfirmed.innerHTML = totalStats.Confirmed.toLocaleString("en");
+      totalDeaths.innerHTML = totalStats.Deaths.toLocaleString("en");
+      date.innerHTML = totalStats.Date.slice(0, 10);
+
+      console.log(totalStats);
+
+      // data.map(function(item) {
+      //   if (item.Province === "British Columbia") {
+      //     active.innerHTML = item.Active;
+      //     confirmed.innerHTML = item.Confirmed;
+      //     deaths.innerHTML = item.Deaths;
+      //     date.innerHTML = item.Date;
+      //     console.log(item.Date);
+      //   }
+      // });
     })
     .catch(err => console.log("error!"));
 }
