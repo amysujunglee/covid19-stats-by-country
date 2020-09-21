@@ -2,6 +2,7 @@ const totalActive = document.querySelector(".total-active");
 const totalConfirmed = document.querySelector(".total-confirmed");
 const totalDeaths = document.querySelector(".total-deaths");
 const lastUpdated = document.querySelector(".date");
+const bcNewCases = document.querySelector(".bc-newcases");
 
 function getCovidStats() {
   fetch("https://api.covid19api.com/total/dayone/country/canada")
@@ -31,4 +32,22 @@ function getCovidStats() {
     .catch(err => console.log("error!"));
 }
 
+function getBcNewCases() {
+  fetch(
+    "https://api.covid19api.com/dayone/country/canada/status/confirmed/live"
+  )
+    .then(res => res.json())
+    .then(data => {
+      //BC New Cases
+      console.log(data);
+      const bcStats = data.filter(item => item.Province === "British Columbia");
+      const latestBcStats = bcStats[bcStats.length - 1];
+      const secondBcStats = bcStats[bcStats.length - 2];
+      const newCases = latestBcStats.Cases - secondBcStats.Cases;
+
+      bcNewCases.innerHTML = newCases;
+    });
+}
+
 getCovidStats();
+getBcNewCases();
