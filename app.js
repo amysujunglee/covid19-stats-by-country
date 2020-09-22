@@ -19,7 +19,18 @@ function getCovidStatsGlobal() {
       newConfirmed.innerHTML = data.Global.NewConfirmed.toLocaleString("en");
       newDeaths.innerHTML = data.Global.NewDeaths.toLocaleString("en");
       newRecovered.innerHTML = data.Global.NewRecovered.toLocaleString("en");
+
+      // data.map(function(item) {
+      //   if (item.Province === "British Columbia") {
+      //     active.innerHTML = item.Active;
+      //     confirmed.innerHTML = item.Confirmed;
+      //     deaths.innerHTML = item.Deaths;
+      //     date.innerHTML = item.Date;
+      //     console.log(item.Date);
+      //   }
+      // });
     })
+
     .catch(err => console.log("error!"));
 }
 
