@@ -78,3 +78,7 @@ function getBcNewCases() {
 getCovidStatsGlobal();
 getCovidStatsCanada();
 getBcNewCases();
+
+//copyright year
+const copyrightDate = document.getElementById("copyright-date");
+data.innerHTML = new Date().getFullYear();
