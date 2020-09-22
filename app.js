@@ -1,10 +1,29 @@
+const globalLastUpdated = document.querySelector(".global-date");
+const newConfirmed = document.querySelector(".new-confirmed");
+const newDeaths = document.querySelector(".new-deaths");
+const newRecovered = document.querySelector(".new-recovered");
+
+const lastUpdated = document.querySelector(".date");
 const totalActive = document.querySelector(".total-active");
 const totalConfirmed = document.querySelector(".total-confirmed");
 const totalDeaths = document.querySelector(".total-deaths");
-const lastUpdated = document.querySelector(".date");
+
 const bcNewCases = document.querySelector(".bc-newcases");
 
-function getCovidStats() {
+function getCovidStatsGlobal() {
+  fetch("https://api.covid19api.com/summary")
+    .then(res => res.json())
+    .then(data => {
+      console.log(data.Global);
+      globalLastUpdated.innerHTML = data.Date.slice(0, 10);
+      newConfirmed.innerHTML = data.Global.NewConfirmed.toLocaleString("en");
+      newDeaths.innerHTML = data.Global.NewDeaths.toLocaleString("en");
+      newRecovered.innerHTML = data.Global.NewRecovered.toLocaleString("en");
+    })
+    .catch(err => console.log("error!"));
+}
+
+function getCovidStatsCanada() {
   fetch("https://api.covid19api.com/total/dayone/country/canada")
     .then(res => res.json())
     .then(data => {
@@ -41,11 +60,10 @@ function getBcNewCases() {
       const secondBcStats = bcStats[bcStats.length - 2];
       const newCases = latestBcStats.Cases - secondBcStats.Cases;
 
-      console.log(latestBcStats, secondBcStats);
-
       bcNewCases.innerHTML = newCases;
     });
 }
 
-getCovidStats();
+getCovidStatsGlobal();
+getCovidStatsCanada();
 getBcNewCases();
