@@ -8,9 +8,6 @@ function getCovidStats() {
   fetch("https://api.covid19api.com/total/dayone/country/canada")
     .then(res => res.json())
     .then(data => {
-      // const bcStats = data.filter(
-      //   prov => prov.Province === "British Columbia" && prov.Active
-      // );
       const totalStats = data[data.length - 1];
       totalActive.innerHTML = totalStats.Active.toLocaleString("en");
       totalConfirmed.innerHTML = totalStats.Confirmed.toLocaleString("en");
@@ -39,11 +36,12 @@ function getBcNewCases() {
     .then(res => res.json())
     .then(data => {
       //BC New Cases
-      console.log(data);
       const bcStats = data.filter(item => item.Province === "British Columbia");
       const latestBcStats = bcStats[bcStats.length - 1];
       const secondBcStats = bcStats[bcStats.length - 2];
       const newCases = latestBcStats.Cases - secondBcStats.Cases;
+
+      console.log(latestBcStats, secondBcStats);
 
       bcNewCases.innerHTML = newCases;
     });
