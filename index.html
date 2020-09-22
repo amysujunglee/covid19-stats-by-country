@@ -15,21 +15,41 @@
     <title>COVID-19 Stats</title>
   </head>
   <body>
-    <main class="container my-4">
-        <h1 class="mb-3">COVID-19 Stats Tracker</h1>
-        <div class="result">
-            <h2 class="h4">Total COVID-19 Stats in Canada:</h2>
-            <p>Total Active#: <span class="total-active"></span></p>
-            <p>Total Confirmed#: <span class="total-confirmed"></span></p>
-            <p>Total Deaths#: <span class="total-deaths"></span></p>
-            <p>Last Updated: <span class="date"></span></p>
+    <main class="container text-center my-4">
+        <h1 class="mb-5">COVID-19 Stats Tracker</h1>
+        <h2 class="h4 mb-3">Total COVID-19 Stats in Canada:</h2>
+        <div class="row mb-4">
+            <div class="card col-6 col-md-3">
+                <div class="card-body">
+                    <p>Last Updated</p>
+                    <p class="date font-weight-bold"></p>
+                </div>
+            </div>
+            <div class="card col-6 col-md-3">
+              <div class="card-body">
+                  <p>Total Active</p>
+                  <p class="total-active font-weight-bold"></p>
+              </div>
+            </div>
+            <div class="card col-6 col-md-3">
+                <div class="card-body">
+                    <p>Total Confirmed</p>
+                    <p class="total-confirmed font-weight-bold"></p>
+                </div>
+            </div>
+            <div class="card col-6 col-md-3">
+                <div class="card-body">
+                    <p>Total Deaths</p>
+                    <p class="total-deaths font-weight-bold"></p>
+                </div>
+            </div>
           </div>
         </div>
         <div>
           <h2 class="h4">BC New Cases: <span class="bc-newcases"></span></h2>
         </div>
     </main>
-    <footer class="container">
+    <footer class="container text-center">
       API reference:
       <a href="https://covid19api.com/">https://covid19api.com/</a>
     </footer>
