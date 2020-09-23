@@ -65,7 +65,7 @@ function getBcNewCases() {
       const secondBcStats = bcStats[bcStats.length - 2];
       const newCases = latestBcStats.Cases - secondBcStats.Cases;
 
-      console.log(bcStats);
+      console.log(latestBcStats, secondBcStats);
 
       bcNewCases.innerHTML = newCases;
     });
