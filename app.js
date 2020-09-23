@@ -77,4 +77,4 @@ getBcNewCases();
 
 //copyright year
 const copyrightDate = document.getElementById("copyright-date");
-data.innerHTML = new Date().getFullYear();
+copyrightDate.innerHTML = new Date().getFullYear();
