@@ -32,7 +32,7 @@ function getCovidStatsGlobal() {
       newRecovered.innerHTML = data.Global.NewRecovered.toLocaleString("en");
     })
 
-    .catch(err => console.log("error in Global!"));
+    .catch(err => console.log("error in Global stats!"));
 }
 
 // total stats in Canada
@@ -49,7 +49,7 @@ function getCovidStatsCanada() {
 
       console.log(caTotalStats);
     })
-    .catch(err => console.log("error in Canada!"));
+    .catch(err => console.log("error in Canada stats!"));
 }
 
 //BC new cases
@@ -68,7 +68,8 @@ function getBcNewCases() {
       console.log(latestBcStats, secondBcStats);
 
       bcNewCases.innerHTML = newCases;
-    });
+    })
+    .catch(err => console.log("error in BC stats!"));
 }
 
 getCovidStatsGlobal();
