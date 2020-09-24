@@ -1,10 +1,6 @@
 const globalStats = document.querySelector(".global-stats");
 const bcNewCases = document.querySelector(".bc-newcases");
-
-const caLastUpdated = document.querySelector(".ca-date");
-const caActive = document.querySelector(".ca-active");
-const caConfirmed = document.querySelector(".ca-confirmed");
-const caDeaths = document.querySelector(".ca-deaths");
+const canadaStats = document.querySelector(".canada-stats");
 
 // total and new stats in global
 function getCovidStatsGlobal() {
@@ -14,7 +10,7 @@ function getCovidStatsGlobal() {
       console.log(data.Global);
       const globalData = data.Global;
       globalStats.innerHTML = `<p class="mb-4">
-      Last Updated: <span class="global-date font-weight-bold">${data.Date.slice(
+      Last Updated: <span class="font-weight-bold">${data.Date.slice(
         0,
         10
       )}</span>
@@ -24,9 +20,9 @@ function getCovidStatsGlobal() {
             <div class="card">
               <div class="card-body">
                 <p class="mb-2">Total Confirmed</p>
-                <p class="font-weight-bold mb-0">${
-                  globalData.TotalConfirmed
-                }</p>
+                <p class="font-weight-bold mb-0">${globalData.TotalConfirmed.toLocaleString(
+                  "en"
+                )}</p>
               </div>
             </div>
           </div>
@@ -34,7 +30,9 @@ function getCovidStatsGlobal() {
             <div class="card">
               <div class="card-body">
                 <p class="mb-2">Total Deaths</p>
-                <p class="font-weight-bold mb-0">${globalData.TotalDeaths}</p>
+                <p class="font-weight-bold mb-0">${globalData.TotalDeaths.toLocaleString(
+                  "en"
+                )}</p>
               </div>
             </div>
           </div>
@@ -52,7 +50,9 @@ function getCovidStatsGlobal() {
             <div class="card">
               <div class="card-body">
                 <p class="mb-2">New Confirmed</p>
-                <p class="font-weight-bold mb-0">${globalData.NewConfirmed}</p>
+                <p class="font-weight-bold mb-0">${globalData.NewConfirmed.toLocaleString(
+                  "en"
+                )}</p>
               </div>
             </div>
           </div>
@@ -60,7 +60,9 @@ function getCovidStatsGlobal() {
             <div class="card">
               <div class="card-body">
                 <p class="mb-2">New Deaths</p>
-                <p class="font-weight-bold mb-0">${globalData.NewDeaths}</p>
+                <p class="font-weight-bold mb-0">${globalData.NewDeaths.toLocaleString(
+                  "en"
+                )}</p>
               </div>
             </div>
           </div>
@@ -68,14 +70,15 @@ function getCovidStatsGlobal() {
             <div class="card">
               <div class="card-body">
                 <p class="mb-2">New Recovered</p>
-                <p class="font-weight-bold mb-0">${globalData.NewRecovered}</p>
+                <p class="font-weight-bold mb-0">${globalData.NewRecovered.toLocaleString(
+                  "en"
+                )}</p>
               </div>
             </div>
           </div>
         </div>
       </div>`;
     })
-
     .catch(err => console.log("error in Global stats!"));
 }
 
@@ -85,13 +88,46 @@ function getCovidStatsCanada() {
     .then(res => res.json())
     .then(data => {
       const caTotalStats = data[data.length - 1];
-
-      caLastUpdated.innerHTML = caTotalStats.Date.slice(0, 10);
-      caActive.innerHTML = caTotalStats.Active.toLocaleString("en");
-      caConfirmed.innerHTML = caTotalStats.Confirmed.toLocaleString("en");
-      caDeaths.innerHTML = caTotalStats.Deaths.toLocaleString("en");
-
       console.log(caTotalStats);
+      canadaStats.innerHTML = `
+      <p class="mb-4">
+        Last Updated: <span class="font-weight-bold">${caTotalStats.Date.slice(
+          0,
+          10
+        )}</span>
+      </p>
+      <div class="row mb-5">
+        <div class="col-12 col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <p class="mb-2">Total Active</p>
+              <p class="font-weight-bold mb-0">${caTotalStats.Active.toLocaleString(
+                "en"
+              )}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card my-3 my-md-0">
+            <div class="card-body">
+              <p class="mb-2">Total Confirmed</p>
+              <p class="font-weight-bold mb-0">${caTotalStats.Confirmed.toLocaleString(
+                "en"
+              )}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <p class="mb-2">Total Deaths</p>
+              <p class="font-weight-bold mb-0">${caTotalStats.Deaths.toLocaleString(
+                "en"
+              )}</p>
+            </div>
+          </div>
+        </div>
+      </div>`;
     })
     .catch(err => console.log("error in Canada stats!"));
 }
@@ -112,7 +148,7 @@ function getBcNewCases() {
       console.log(latestBcStats, secondBcStats);
 
       bcNewCases.innerHTML = `<h2 class="h4">
-      British Columbia New Cases: ${newCases}</h2>`;
+      British Columbia New Cases: ${newCases.toLocaleString("en")}</h2>`;
     })
     .catch(err => console.log("error in BC stats!"));
 }
