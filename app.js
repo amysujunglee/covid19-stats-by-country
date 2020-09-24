@@ -40,9 +40,9 @@ function getCovidStatsGlobal() {
             <div class="card">
               <div class="card-body">
                 <p class="mb-2">Total Recovered</p>
-                <p class="font-weight-bold mb-0">${
-                  globalData.TotalRecovered
-                }</p>
+                <p class="font-weight-bold mb-0">${globalData.TotalRecovered.toLocaleString(
+                  "en"
+                )}</p>
               </div>
             </div>
           </div>
