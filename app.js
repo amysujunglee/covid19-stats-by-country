@@ -1,11 +1,10 @@
 const globalStats = document.querySelector(".global-stats");
+const bcNewCases = document.querySelector(".bc-newcases");
 
 const caLastUpdated = document.querySelector(".ca-date");
 const caActive = document.querySelector(".ca-active");
 const caConfirmed = document.querySelector(".ca-confirmed");
 const caDeaths = document.querySelector(".ca-deaths");
-
-const bcNewCases = document.querySelector(".bc-newcases");
 
 // total and new stats in global
 function getCovidStatsGlobal() {
@@ -112,7 +111,8 @@ function getBcNewCases() {
 
       console.log(latestBcStats, secondBcStats);
 
-      bcNewCases.innerHTML = newCases;
+      bcNewCases.innerHTML = `<h2 class="h4">
+      British Columbia New Cases: ${newCases}</h2>`;
     })
     .catch(err => console.log("error in BC stats!"));
 }
