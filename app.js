@@ -1,10 +1,4 @@
-const globalLastUpdated = document.querySelector(".global-date");
-const totalConfirmed = document.querySelector(".total-confirmed");
-const totalDeaths = document.querySelector(".total-deaths");
-const totalRecovered = document.querySelector(".total-recovered");
-const newConfirmed = document.querySelector(".new-confirmed");
-const newDeaths = document.querySelector(".new-deaths");
-const newRecovered = document.querySelector(".new-recovered");
+const globalStats = document.querySelector(".global-stats");
 
 const caLastUpdated = document.querySelector(".ca-date");
 const caActive = document.querySelector(".ca-active");
@@ -19,17 +13,68 @@ function getCovidStatsGlobal() {
     .then(res => res.json())
     .then(data => {
       console.log(data.Global);
-      globalLastUpdated.innerHTML = data.Date.slice(0, 10);
-      totalConfirmed.innerHTML = data.Global.TotalConfirmed.toLocaleString(
-        "en"
-      );
-      totalDeaths.innerHTML = data.Global.TotalDeaths.toLocaleString("en");
-      totalRecovered.innerHTML = data.Global.TotalRecovered.toLocaleString(
-        "en"
-      );
-      newConfirmed.innerHTML = data.Global.NewConfirmed.toLocaleString("en");
-      newDeaths.innerHTML = data.Global.NewDeaths.toLocaleString("en");
-      newRecovered.innerHTML = data.Global.NewRecovered.toLocaleString("en");
+      const globalData = data.Global;
+      globalStats.innerHTML = `<p class="mb-4">
+      Last Updated: <span class="global-date font-weight-bold">${data.Date.slice(
+        0,
+        10
+      )}</span>
+    </p>
+    <div class="row mb-5">
+          <div class="col-4 col-lg-2 mb-3 mb-lg-0">
+            <div class="card">
+              <div class="card-body">
+                <p class="mb-2">Total Confirmed</p>
+                <p class="font-weight-bold mb-0">${
+                  globalData.TotalConfirmed
+                }</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 col-lg-2">
+            <div class="card">
+              <div class="card-body">
+                <p class="mb-2">Total Deaths</p>
+                <p class="font-weight-bold mb-0">${globalData.TotalDeaths}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 col-lg-2">
+            <div class="card">
+              <div class="card-body">
+                <p class="mb-2">Total Recovered</p>
+                <p class="font-weight-bold mb-0">${
+                  globalData.TotalRecovered
+                }</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 col-lg-2">
+            <div class="card">
+              <div class="card-body">
+                <p class="mb-2">New Confirmed</p>
+                <p class="font-weight-bold mb-0">${globalData.NewConfirmed}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 col-lg-2">
+            <div class="card">
+              <div class="card-body">
+                <p class="mb-2">New Deaths</p>
+                <p class="font-weight-bold mb-0">${globalData.NewDeaths}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 col-lg-2">
+            <div class="card">
+              <div class="card-body">
+                <p class="mb-2">New Recovered</p>
+                <p class="font-weight-bold mb-0">${globalData.NewRecovered}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
     })
 
     .catch(err => console.log("error in Global stats!"));
