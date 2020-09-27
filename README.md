@@ -10,3 +10,8 @@ Methods used:
 - 3rd party's API (https://covid19api.com/)
 - .toLocaleString('en')
 - .slice(a, b)
+
+Improvements:
+
+- Show different colors depending on numbers (Increased number - red, decreased number - green)
+- Inform that British Columbia new cases number doesn't show up during weekends.
