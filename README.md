@@ -14,4 +14,5 @@ Methods used:
 Improvements:
 
 - Show different colors depending on numbers (Increased number - red, decreased number - green)
-- Inform that British Columbia new cases number doesn't show up during weekends.
+- Inform that British Columbia new cases number doesn't show up during weekends
+- Add more provinces' statistics; Toronto, Quebec, Alberta, etc. 
