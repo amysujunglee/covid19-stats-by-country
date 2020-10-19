@@ -1,6 +1,6 @@
 # covid19-stats-by-country
 
-Displaying COVID-19 global total cases, confirmed and deaths
+Displaying COVID-19 global total cases, confirmed and deaths (Plus, new cases and deaths in Canada)
 
 Languages used:
 JavaScript, HTML, CSS
