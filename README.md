@@ -2,7 +2,7 @@
 
 Displaying COVID-19 global total cases, confirmed and deaths (Plus, showing new cases and deaths in Canada)
 
-## Languages used:
+## Languages
 - JavaScript, HTML, CSS
 
 ## Methods used:
