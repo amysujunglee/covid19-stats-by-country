@@ -11,6 +11,6 @@ Displaying COVID-19 global total cases, confirmed and deaths (Plus, showing new 
 - .slice()
 
 ## Future Improvements
-- Show different colors depending on numbers (Increased number - red, decreased number - green)
-- Inform that British Columbia new cases number doesn't show up during weekends
-- Add more provinces' statistics; Toronto, Quebec, Alberta, etc. 
+- [ ] Show different colors depending on numbers (Increased number - red, decreased number - green)
+- [ ] Inform that British Columbia new cases number doesn't show up during weekends
+- [ ] Add more provinces' statistics; Toronto, Quebec, Alberta, etc. 
