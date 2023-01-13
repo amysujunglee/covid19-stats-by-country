@@ -4,25 +4,21 @@ const canadaStats = document.querySelector(".canada-stats");
 
 // total and new stats in global
 function getCovidStatsGlobal() {
-  fetch("https://api.covid19api.com/summary")
+  const url = 'https://api.covid19api.com/summary';
+  fetch(url)
     .then(res => res.json())
     .then(data => {
-      console.log(data.Global);
       const globalData = data.Global;
-      globalStats.innerHTML = `<p class="mb-4">
-      Last Updated: <span class="font-weight-bold">${data.Date.slice(
-        0,
-        10
-      )}</span>
-    </p>
-    <div class="row mb-5">
+      globalStats.innerHTML = `
+      <p class="mb-4">
+        Last Updated: <span class="font-weight-bold">${data.Date.slice(0,10)}</span>
+      </p>
+      <div class="row mb-5">
           <div class="col-4 col-lg-2 mb-3 mb-lg-0">
             <div class="card">
               <div class="card-body">
                 <p class="mb-2">Total Confirmed</p>
-                <p class="font-weight-bold mb-0">${globalData.TotalConfirmed.toLocaleString(
-                  "en"
-                )}</p>
+                <p class="font-weight-bold mb-0">${globalData.TotalConfirmed.toLocaleString("en")}</p>
               </div>
             </div>
           </div>
@@ -84,11 +80,11 @@ function getCovidStatsGlobal() {
 
 // total stats in Canada
 function getCovidStatsCanada() {
-  fetch("https://api.covid19api.com/total/dayone/country/canada")
+  const url = 'https://api.covid19api.com/total/dayone/country/canada';
+  fetch(url)
     .then(res => res.json())
     .then(data => {
       const caTotalStats = data[data.length - 1];
-      console.log(caTotalStats);
       canadaStats.innerHTML = `
       <p class="mb-4">
         Last Updated: <span class="font-weight-bold">${caTotalStats.Date.slice(
@@ -134,19 +130,14 @@ function getCovidStatsCanada() {
 
 //BC new cases
 function getBcNewCases() {
-  fetch(
-    "https://api.covid19api.com/dayone/country/canada/status/confirmed/live"
-  )
+  const url = 'https://api.covid19api.com/dayone/country/canada/status/confirmed/live';
+  fetch(url)
     .then(res => res.json())
     .then(data => {
       const bcStats = data.filter(item => item.Province === "British Columbia");
-
       const latestBcStats = bcStats[bcStats.length - 1];
       const secondBcStats = bcStats[bcStats.length - 2];
       const newCases = latestBcStats.Cases - secondBcStats.Cases;
-
-      console.log(latestBcStats, secondBcStats);
-
       bcNewCases.innerHTML = `<h2 class="h4">
       British Columbia New Cases: ${newCases.toLocaleString("en")}</h2>`;
     })
