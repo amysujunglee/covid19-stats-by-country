@@ -9,8 +9,8 @@ Displaying COVID-19 global total cases, confirmed and deaths (Plus, showing new 
 ## Methods
 
 - 3rd party's API (https://covid19api.com/)
-- .toLocaleString()
-- .slice()
+- toLocaleString()
+- slice()
 
 ## Future Improvements
 
